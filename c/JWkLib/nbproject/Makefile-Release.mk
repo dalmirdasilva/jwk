@@ -35,7 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/631556369/JNIJWkLib.o
+	${OBJECTDIR}/_ext/207831894/JNIJWkLib.o \
+	${OBJECTDIR}/_ext/207831894/callback_attacher.o
 
 
 # C Compiler Flags
@@ -62,10 +63,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJWkLib.${CND_DLIB_EXT}: ${OBJECTFI
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJWkLib.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/_ext/631556369/JNIJWkLib.o: /home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/631556369
+${OBJECTDIR}/_ext/207831894/JNIJWkLib.o: /home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/207831894
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/631556369/JNIJWkLib.o /home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.c
+	$(COMPILE.c) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/207831894/JNIJWkLib.o /home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.c
+
+${OBJECTDIR}/_ext/207831894/callback_attacher.o: /home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/207831894
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/207831894/callback_attacher.o /home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.c
 
 # Subprojects
 .build-subprojects:

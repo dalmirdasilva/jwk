@@ -1,12 +1,11 @@
 package jwk;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Convert HTML to PDF using WKHTMLTOX without launching
@@ -15,26 +14,47 @@ import java.util.logging.Logger;
  */
 public class JWk {
 
+    private List<String> warnings;
+    private List<String> errors;
+    private List<String> infos;
+
     static {
         Path LIBPATH = Paths.get(System.getProperty("user.dir"));
         System.load(LIBPATH + "/../../c/JWkLib/dist/libJWkLib.so");
     }
 
-    public static void main(String[] args) {
-        Map<String, String> options = new HashMap<>();
-        options.put("key", "value");
-        try {
-            for (int i = 0; i < 1000; i++) {
-                new JWk().sysConvert("http://localhost", "/tmp/sys.pdf"/*, options*/);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(JWk.class.getName()).log(Level.SEVERE, null, ex);
+    public void convert(String src, String dst, Map<String, String> options) throws JWkFailException {
+        warnings = new ArrayList<>();
+        errors = new ArrayList<>();
+        infos = new ArrayList<>();
+        if (!convertImp(src, dst, options, options.entrySet().toArray())) {
+            throw new JWkFailException("Cannot convert.");
         }
     }
 
-    private native void convert(String src, String dst/*, Map<String, String> options*/);
-
-    private void sysConvert(String src, String dst) throws IOException {
-        Runtime.getRuntime().exec("wkhtmltopdf " + src + " " + dst);
+    public List<String> getWarnings() {
+        return warnings;
     }
+
+    public List<String> getErrors() {
+        return errors;
+    }
+
+    public List<String> getInfos() {
+        return infos;
+    }
+
+    private void addWarning(String warning) {
+        warnings.add(warning);
+    }
+
+    private void addError(String error) {
+        errors.add(error);
+    }
+
+    private void addInfo(String info) {
+        infos.add(info);
+    }
+
+    private native boolean convertImp(String src, String dst, Map<String, String> options, Object[] optionsKeys) throws JWkFailException;
 }

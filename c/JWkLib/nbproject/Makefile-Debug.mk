@@ -35,7 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/631556369/JNIJWkLib.o
+	${OBJECTDIR}/_ext/207831894/JNIJWkLib.o \
+	${OBJECTDIR}/_ext/207831894/callback_attacher.o
 
 
 # C Compiler Flags
@@ -62,10 +63,15 @@ dist/libJWkLib.so: ${OBJECTFILES}
 	${MKDIR} -p dist
 	${LINK.c} -o dist/libJWkLib.so ${OBJECTFILES} ${LDLIBSOPTIONS} -lwkhtmltox -shared -fPIC
 
-${OBJECTDIR}/_ext/631556369/JNIJWkLib.o: /home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/631556369
+${OBJECTDIR}/_ext/207831894/JNIJWkLib.o: /home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/207831894
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I/usr/lib/jvm/java-8-oracle/include/linux -I/usr/lib/jvm/java-8-oracle/include -I/usr/local/include/ -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/631556369/JNIJWkLib.o /home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.c
+	$(COMPILE.c) -g -I/usr/lib/jvm/java-8-oracle/include/linux -I/usr/lib/jvm/java-8-oracle/include -I/usr/local/include/ -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/207831894/JNIJWkLib.o /home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.c
+
+${OBJECTDIR}/_ext/207831894/callback_attacher.o: /home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/207831894
+	${RM} "$@.d"
+	$(COMPILE.c) -g -I/usr/lib/jvm/java-8-oracle/include/linux -I/usr/lib/jvm/java-8-oracle/include -I/usr/local/include/ -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/207831894/callback_attacher.o /home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.c
 
 # Subprojects
 .build-subprojects:

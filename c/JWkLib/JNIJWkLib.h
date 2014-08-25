@@ -2,8 +2,9 @@
  * File:   JNIJWkLib.h
  * Author: dalmir
  *
- * Created on August 25, 2014, 2:11 PM
+ * Created on August 25, 2014, 6:01 PM
  */
+
 #ifndef JNIJWKLIB_H
 #define	JNIJWKLIB_H
 
@@ -11,7 +12,7 @@
 extern "C" {
 #endif
 
-JNIEXPORT void JNICALL Java_jwk_JWk_convert(JNIEnv *env, jobject obj, jstring jsrc, jstring jdst);
+JNIEXPORT void JNICALL Java_jwk_JWk_convertImp(JNIEnv *env, jobject obj, jstring jsrc, jstring jdst, jobject optionsMap, jobject optionsKeys);
 
 #ifdef	__cplusplus
 }

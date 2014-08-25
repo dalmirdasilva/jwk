@@ -3,45 +3,32 @@
 #include <stdio.h>
 #include <wkhtmltox/pdf.h>
 #include "JNIJWkLib.h"
+#include "callback_attacher.h"
 
-void progress_changed(wkhtmltopdf_converter* c, int p) {
-    printf("%3d%%\r", p);
-    fflush(stdout);
+void wkhtmltopdf_setup(wkhtmltopdf_global_settings** gs, wkhtmltopdf_object_settings** os, wkhtmltopdf_converter** c) {
+    wkhtmltopdf_init(false);
+    *gs = wkhtmltopdf_create_global_settings();
+    *os = wkhtmltopdf_create_object_settings();
+    *c = wkhtmltopdf_create_converter(*gs);
 }
 
-void phase_changed(wkhtmltopdf_converter * c) {
-    int phase = wkhtmltopdf_current_phase(c);
-    printf("%s\n", wkhtmltopdf_phase_description(c, phase));
-}
-
-void error(wkhtmltopdf_converter * c, const char* msg) {
-    fprintf(stderr, "Error: %s\n", msg);
-}
-
-void warning(wkhtmltopdf_converter * c, const char* msg) {
-    fprintf(stderr, "Warning: %s\n", msg);
-}
-
-JNIEXPORT void JNICALL Java_jwk_JWk_convert(JNIEnv *env, jobject obj, jstring jsrc, jstring jdst) {
+JNIEXPORT void JNICALL Java_jwk_JWk_convertImp(JNIEnv *env, jobject obj, jstring jsrc, jstring jdst, jobject optionsMap, jobject optionsKeys) {
     
     wkhtmltopdf_global_settings* gs;
     wkhtmltopdf_object_settings* os;
     wkhtmltopdf_converter* c;
+
     const char* src = (*env)->GetStringUTFChars(env, jsrc, NULL);
     const char* dst = (*env)->GetStringUTFChars(env, jdst, NULL);
+    
+    wkhtmltopdf_setup(&gs, &os, &c);
+    wkhtmltopdf_attach_callbacks(&c, env, obj);
 
-    wkhtmltopdf_init(false);
-    gs = wkhtmltopdf_create_global_settings();
     wkhtmltopdf_set_global_setting(gs, "out", dst);
-    //wkhtmltopdf_set_global_setting(gs, "load.cookieJar", "myjar.jar");
-    os = wkhtmltopdf_create_object_settings();
     wkhtmltopdf_set_object_setting(os, "page", src);
-    c = wkhtmltopdf_create_converter(gs);
-    wkhtmltopdf_set_progress_changed_callback(c, progress_changed);
-    wkhtmltopdf_set_phase_changed_callback(c, phase_changed);
-    wkhtmltopdf_set_error_callback(c, error);
-    wkhtmltopdf_set_warning_callback(c, warning);
+    
     wkhtmltopdf_add_object(c, os, NULL);
+
     if (!wkhtmltopdf_convert(c)) {
         fprintf(stderr, "Convertion failed!");
     }

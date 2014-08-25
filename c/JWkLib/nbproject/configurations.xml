@@ -4,7 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>/home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.h</itemPath>
+      <itemPath>/home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.h</itemPath>
+      <itemPath>/home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,7 +14,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>/home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.c</itemPath>
+      <itemPath>/home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.c</itemPath>
+      <itemPath>/home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -52,12 +54,22 @@
           <commandLine>-lwkhtmltox</commandLine>
         </linkerTool>
       </compileType>
-      <item path="/home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.c"
+      <item path="/home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.c"
             ex="false"
             tool="0"
             flavor2="0">
       </item>
-      <item path="/home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.h"
+      <item path="/home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -83,12 +95,22 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="/home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.c"
+      <item path="/home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.c"
             ex="false"
             tool="0"
             flavor2="0">
       </item>
-      <item path="/home/dalmir/NetBeansProjects/JWkLib/JNIJWkLib.h"
+      <item path="/home/dalmir/hpprojects/jwk/c/JWkLib/JNIJWkLib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/dalmir/hpprojects/jwk/c/JWkLib/callback_attacher.h"
             ex="false"
             tool="3"
             flavor2="0">
