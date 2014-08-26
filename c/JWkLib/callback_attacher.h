@@ -8,11 +8,13 @@
 #ifndef CALLBACK_ATTACHER_H
 #define	CALLBACK_ATTACHER_H
 
+#include <jni.h>
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
 
-void wkhtmltopdf_attach_callbacks(JNIEnv *env, jobject obj, wkhtmltopdf_converter** c);
+void wkhtmltopdf_attach_callbacks(JNIEnv *env, jobject* obj, wkhtmltopdf_converter** c);
 
 #ifdef	__cplusplus
 }

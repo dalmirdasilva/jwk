@@ -24,7 +24,7 @@ void warning(wkhtmltopdf_converter * c, const char* msg) {
 }
 #endif
 
-void wkhtmltopdf_attach_callbacks(JNIEnv *env, jobject obj, wkhtmltopdf_converter** c) {
+void wkhtmltopdf_attach_callbacks(JNIEnv *env, jobject* obj, wkhtmltopdf_converter** c) {
 #ifdef DEBUG
     wkhtmltopdf_set_progress_changed_callback(*c, progress_changed);
     wkhtmltopdf_set_phase_changed_callback(*c, phase_changed);

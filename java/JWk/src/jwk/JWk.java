@@ -23,7 +23,7 @@ public class JWk {
         System.load(LIBPATH + "/../../c/JWkLib/dist/libJWkLib.so");
     }
 
-    public void convert(String src, String dst, Map<String, String> options) throws JWkFailException {
+    synchronized public void convert(String src, String dst, Map<String, String> options) throws JWkFailException {
         warnings = new ArrayList<>();
         errors = new ArrayList<>();
         infos = new ArrayList<>();
