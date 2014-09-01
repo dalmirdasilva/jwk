@@ -1,4 +1,4 @@
 jwk
 ===
 
-Java API to talk with WKHTMLTOX.
+Java API to talk to WKHTMLTOX.
